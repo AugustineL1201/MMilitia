@@ -3,7 +3,7 @@ import battlecode.common.*;
 import java.util.ArrayList;
 
 public class Miner extends Unit {
-    static int numVaporators = 0;
+    
     int numDesignSchools = 0;
     ArrayList<MapLocation> soupLocations = new ArrayList<MapLocation>();
 
