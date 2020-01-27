@@ -6,11 +6,4 @@ public class Vaporator extends Building {
     public Vaporator(RobotController r) {
         super(r);
     }
-    
-    if(numVaporators < 2) && (numMiners == 7) && (numLandscapers == 4) {
-            for (Direction dir : Util.directions)
-                if(tryBuild(RobotType.VAPORATOR, dir)){
-                    numVaporators++;
-                }
-        }
 }
