@@ -1,4 +1,4 @@
-package lectureplayer;
+package MMilitia;
 import battlecode.common.*;
 
 public class HQ extends Shooter {
