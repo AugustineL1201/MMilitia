@@ -9,7 +9,7 @@ public class Miner extends Unit {
 
     public Miner(RobotController r) {
         super(r);
-         if(numVaporators < 2) && (HQ.numMiners == 7) && (DesignSchool.numLandscapers == 4) {
+         if ((numVaporators < 2) && (HQ.numMiners == 7) && (DesignSchool.numLandscapers == 4)) {
             for (Direction dir : Util.directions)
                 if(tryBuild(RobotType.VAPORATOR, dir)){
                     numVaporators++;
