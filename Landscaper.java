@@ -54,6 +54,23 @@ public class Landscaper extends Unit {
             nav.goTo(Util.randomDirection());
         }
     }
+    
+    Direction[] diagonalsArray = {Direction.NORTHEAST, Direction.NORTHWEST, Direction.SOUTHWEST, Direction.SOUTHEAST};
+        List<Direction> diagonals = Arrays.asList(diagonalsArray);
+
+        Direction fromHQ = myHQLocation.directionTo(currLocation);
+        if (diagonals.contains(fromHQ)) {
+            MapLocation rightLocation = myHQLocation.add(fromHQ.rotateRight());
+            MapLocation leftLocation = myHQLocation.add(fromHQ.rotateLeft());
+
+            if (rc.canSenseLocation(rightLocation)) {
+                if (rc.senseRobotAtLocation(rightLocation) == null) {
+                    Direction rightDir = currLocation.directionTo(rightLocation);
+                    if (rc.canMove(rightDir)) {
+                        rc.move(rightDir);
+                    }
+                }
+            }
 
     boolean tryDig() throws GameActionException {
         Direction dir;
