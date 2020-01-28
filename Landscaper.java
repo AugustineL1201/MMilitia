@@ -7,7 +7,6 @@ public class Landscaper extends Unit {
         super(r);
     }
     
-    static MapLocation myHQLocation = null;
 
     public void takeTurn() throws GameActionException {
         super.takeTurn();
@@ -19,8 +18,10 @@ public class Landscaper extends Unit {
                 rc.digDirt(dirtohq);
             }
         }
-
-      
+        
+         if(rc.getDirtCarrying() == 0){
+            tryDig();
+        }
         
          if(myHQLocation == null){
             RobotInfo[] nearby = rc.senseNearbyRobots(RobotType.LANDSCAPER.sensorRadiusSquared, rc.getTeam());
@@ -64,22 +65,6 @@ public class Landscaper extends Unit {
         }
     }
     
-    Direction[] diagonalsArray = {Direction.NORTHEAST, Direction.NORTHWEST, Direction.SOUTHWEST, Direction.SOUTHEAST};
-        List<Direction> diagonals = Arrays.asList(diagonalsArray);
-
-        Direction fromHQ = myHQLocation.directionTo(currLocation);
-        if (diagonals.contains(fromHQ)) {
-            MapLocation rightLocation = myHQLocation.add(fromHQ.rotateRight());
-            MapLocation leftLocation = myHQLocation.add(fromHQ.rotateLeft());
-
-            if (rc.canSenseLocation(rightLocation)) {
-                if (rc.senseRobotAtLocation(rightLocation) == null) {
-                    Direction rightDir = currLocation.directionTo(rightLocation);
-                    if (rc.canMove(rightDir)) {
-                        rc.move(rightDir);
-                    }
-                }
-            }
 
     boolean tryDig() throws GameActionException {
         Direction dir;
