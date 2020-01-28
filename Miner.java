@@ -39,7 +39,6 @@ public class Miner extends Unit {
         
         if (soupLocation == null) {
             int radius = comms.getRealRadius(RobotType.MINER);
-            soupLocation = comms.searchForTile(rc, currLocation, radius);
             if (soupLocation != null) {
             }
         }
