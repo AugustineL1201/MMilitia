@@ -18,7 +18,7 @@ public class DesignSchool extends Building {
         for (Direction dir : Util.directions) {
             if(tryBuild(RobotType.LANDSCAPER, dir)) {
                 System.out.println("made a landscaper");
-                numLandscapers+=8;
+                numLandscapers++;
             }
         }
         }
