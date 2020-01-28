@@ -23,6 +23,9 @@ public class Communications {
     static int getRealRadius(RobotType robotType) {
         return (int)Math.ceil(Math.sqrt(robotType.sensorRadiusSquared));
     }
+    static MapLocation searchForTile(RobotController rc, MapLocation currLocation, int tile, int radius) throws GameActionException {
+        MapLocation tileLocation = null;
+        MapLocation senseLocation = new MapLocation(currLocation.x - radius, currLocation.y - radius);
 
     public void sendHqLoc(MapLocation loc) throws GameActionException {
         int[] message = new int[7];
@@ -46,30 +49,7 @@ public class Communications {
         }
         return null;
     }
-     boolean searchingEast = true;
-        int maxSoup = 0;
-        for (int i = 0; i < radius * 2 + 1; i++) {
-            for (int j = 0; j < radius * 2 + 1; j++) {
-                if (rc.canSenseLocation(senseLocation)) {
-
-                    if (tile == SEARCH_SOUP) {
-                        int soupFound = rc.senseSoup(senseLocation);
-                        if (soupFound > maxSoup) {
-                            tileLocation = senseLocation;
-                            maxSoup = soupFound;
-                        }
-                    } else if (tile == SEARCH_FLOOD) {
-                        if (rc.senseFlooding(senseLocation)) {
-                            tileLocation = senseLocation;
-                            break;
-                        }
-                    } else if (tile > 100) {
-                        if(rc.canSenseRobot(tile)){
-                            tileLocation = senseLocation;
-                            break;
-                        }
-                    }
-                }
+   
 
     public boolean broadcastedCreation = false;
     public void broadcastDesignSchoolCreation(MapLocation loc) throws GameActionException {
