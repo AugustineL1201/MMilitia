@@ -17,7 +17,7 @@ public class Miner extends Unit {
         
         numVaporators += comms.getNewVaporatorCount();
         
-        if ((numVaporators < 2) && (HQ.numMiners == 5) && (DesignSchool.numLandscapers == 3)) {
+        if (numVaporators < 3) {
             for (Direction dir : Util.directions)
                 if(tryBuild(RobotType.VAPORATOR, dir)){
                     numVaporators++;
