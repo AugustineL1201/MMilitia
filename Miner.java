@@ -54,18 +54,6 @@ public class Miner extends Unit {
             }
         }
         RobotInfo[] nearby = rc.senseNearbyRobots(RobotType.MINER.sensorRadiusSquared, rc.getTeam());
-        for (RobotInfo curr : nearby) {
-            switch (curr.getType()) {
-                case DESIGN_SCHOOL:
-                    builtDesignSchool = true;
-                    break;
-                case HQ:
-                    myHQLocation = curr.location;
-                    break;
-                default:
-                    break;
-            }
-        }
         
         numDesignSchools += comms.getNewDesignSchoolCount();
         comms.updateSoupLocations(soupLocations);
