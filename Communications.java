@@ -25,7 +25,7 @@ public class Communications {
     }
     static MapLocation searchForTile(RobotController rc, MapLocation currLocation, int tile, int radius) throws GameActionException {
         MapLocation tileLocation = null;
-        MapLocation senseLocation = new MapLocation(currLocation.x - radius, currLocation.y - radius);
+        MapLocation senseLocation = new MapLocation(loc.x - radius, loc.y - radius);
 
     public void sendHqLoc(MapLocation loc) throws GameActionException {
         int[] message = new int[7];
