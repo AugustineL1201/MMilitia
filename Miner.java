@@ -8,7 +8,6 @@ public class Miner extends Unit {
     static Direction prevDirection = null;
     static MapLocation soupLocation = null;
     static MapLocation myHQLocation = null;
-    static boolean builtDesignSchool = false;
 
     static boolean goingBackToHQ = false;
     
@@ -21,6 +20,9 @@ public class Miner extends Unit {
         super(r);
        
     }
+    
+    MapLocation currLocation = rc.getLocation();
+        int currSoup = rc.getTeamSoup();
 
     public void takeTurn() throws GameActionException {
         super.takeTurn();
@@ -36,8 +38,8 @@ public class Miner extends Unit {
         }
         
         if (soupLocation == null) {
-            int radius = Common.getRealRadius(RobotType.MINER);
-            soupLocation = Common.searchForTile(rc, currLocation, Common.SEARCH_SOUP, radius);
+            int radius = comms.getRealRadius(RobotType.MINER);
+            soupLocation = comms.searchForTile(rc, currLocation, comms.SEARCH_SOUP, radius);
             if (soupLocation != null) {
             }
         }
@@ -142,5 +144,10 @@ public class Miner extends Unit {
                 soupLocations.remove(0);
             }
         }
+    }
+    static boolean designSchoolTooFar(MapLocation currLocation) {
+        Direction oppositeHQ = currLocation.directionTo(myHQLocation).opposite();
+        MapLocation farthestBuild = currLocation.add(oppositeHQ);
+        return (!farthestBuild.isWithinDistanceSquared(myHQLocation, RobotType.LANDSCAPER.sensorRadiusSquared));
     }
 }
