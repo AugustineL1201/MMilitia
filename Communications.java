@@ -19,6 +19,10 @@ public class Communications {
     public Communications(RobotController r) {
         rc = r;
     }
+    
+    static int getRealRadius(RobotType robotType) {
+        return (int)Math.ceil(Math.sqrt(robotType.sensorRadiusSquared));
+    }
 
     public void sendHqLoc(MapLocation loc) throws GameActionException {
         int[] message = new int[7];
