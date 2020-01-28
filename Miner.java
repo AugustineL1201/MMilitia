@@ -21,6 +21,7 @@ public class Miner extends Unit {
             for (Direction dir : Util.directions)
                 if(tryBuild(RobotType.VAPORATOR, dir)){
                     numVaporators++;
+                    System.out.println("new vaporators");
                 }
         }
         
