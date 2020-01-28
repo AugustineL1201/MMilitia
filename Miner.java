@@ -7,7 +7,7 @@ public class Miner extends Unit {
     static Direction searchDirection = null;
     static MapLocation soupLocation = null;
     
-    int numRefinery = 0;
+    static int numRefinery = 0;
     int numDesignSchools = 0;
     
     ArrayList<MapLocation> soupLocations = new ArrayList<MapLocation>();
