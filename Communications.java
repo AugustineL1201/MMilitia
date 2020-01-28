@@ -46,6 +46,30 @@ public class Communications {
         }
         return null;
     }
+     boolean searchingEast = true;
+        int maxSoup = 0;
+        for (int i = 0; i < radius * 2 + 1; i++) {
+            for (int j = 0; j < radius * 2 + 1; j++) {
+                if (rc.canSenseLocation(senseLocation)) {
+
+                    if (tile == SEARCH_SOUP) {
+                        int soupFound = rc.senseSoup(senseLocation);
+                        if (soupFound > maxSoup) {
+                            tileLocation = senseLocation;
+                            maxSoup = soupFound;
+                        }
+                    } else if (tile == SEARCH_FLOOD) {
+                        if (rc.senseFlooding(senseLocation)) {
+                            tileLocation = senseLocation;
+                            break;
+                        }
+                    } else if (tile > 100) {
+                        if(rc.canSenseRobot(tile)){
+                            tileLocation = senseLocation;
+                            break;
+                        }
+                    }
+                }
 
     public boolean broadcastedCreation = false;
     public void broadcastDesignSchoolCreation(MapLocation loc) throws GameActionException {
