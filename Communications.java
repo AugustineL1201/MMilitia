@@ -76,12 +76,12 @@ public class Communications {
         return count;
     }
     
-    public int getNewVaporatorCount() throws GameActionException {
+    public int getNewRefineryCount() throws GameActionException {
         int count = 0;
         for(Transaction tx : rc.getBlock(rc.getRoundNum() - 1)) {
             int[] mess = tx.getMessage();
             if(mess[0] == teamSecret && mess[1] == 1){
-                System.out.println("more vaporators = more soup");
+                System.out.println("more refineries = more soup");
                 count += 1;
             }
         }
