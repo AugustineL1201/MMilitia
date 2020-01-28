@@ -20,9 +20,7 @@ public class Landscaper extends Unit {
             }
         }
 
-        if(rc.getDirtCarrying() == 0){
-            tryDig();
-        }
+      
         
          if(myHQLocation == null){
             RobotInfo[] nearby = rc.senseNearbyRobots(RobotType.LANDSCAPER.sensorRadiusSquared, rc.getTeam());
