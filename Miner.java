@@ -39,17 +39,11 @@ public class Miner extends Unit {
         
         if (soupLocation == null) {
             int radius = comms.getRealRadius(RobotType.MINER);
-            soupLocation = comms.searchForTile(rc, currLocation, comms.SEARCH_SOUP, radius);
+            soupLocation = comms.searchForTile(rc, currLocation, radius);
             if (soupLocation != null) {
             }
         }
-        if (goingBackToHQ) {
-            if (designSchoolTooFar(currLocation)) {
-                moveInDirection(rc, currLocation.directionTo(myHQLocation));
-            } else {
-                goingBackToHQ = false;
-            }
-        }
+        
         if (searchDirection == null) {
             RobotInfo[] nearbyRobots = rc.senseNearbyRobots();
             for (RobotInfo robot : nearbyRobots) {
