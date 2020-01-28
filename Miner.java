@@ -3,8 +3,18 @@ import battlecode.common.*;
 import java.util.ArrayList;
 
 public class Miner extends Unit {
+    
+    static Direction searchDirection = null;
+    static Direction prevDirection = null;
+    static MapLocation soupLocation = null;
+    static MapLocation myHQLocation = null;
+    static boolean builtDesignSchool = false;
+
+    static boolean goingBackToHQ = false;
+    
     static int numVaporators = 0;
     int numDesignSchools = 0;
+    
     ArrayList<MapLocation> soupLocations = new ArrayList<MapLocation>();
 
     public Miner(RobotController r) {
@@ -23,6 +33,42 @@ public class Miner extends Unit {
                     numVaporators++;
                     System.out.println("new vaporators");
                 }
+        }
+        
+        if (soupLocation == null) {
+            int radius = Common.getRealRadius(RobotType.MINER);
+            soupLocation = Common.searchForTile(rc, currLocation, Common.SEARCH_SOUP, radius);
+            if (soupLocation != null) {
+            }
+        }
+        if (goingBackToHQ) {
+            if (designSchoolTooFar(currLocation)) {
+                moveInDirection(rc, currLocation.directionTo(myHQLocation));
+            } else {
+                goingBackToHQ = false;
+            }
+        }
+        if (searchDirection == null) {
+            RobotInfo[] nearbyRobots = rc.senseNearbyRobots();
+            for (RobotInfo robot : nearbyRobots) {
+                if (robot.getType() == RobotType.HQ && robot.getTeam() == rc.getTeam()) {
+                    searchDirection = currLocation.directionTo(robot.location).opposite();
+                    break;
+                }
+            }
+        }
+        RobotInfo[] nearby = rc.senseNearbyRobots(RobotType.MINER.sensorRadiusSquared, rc.getTeam());
+        for (RobotInfo curr : nearby) {
+            switch (curr.getType()) {
+                case DESIGN_SCHOOL:
+                    builtDesignSchool = true;
+                    break;
+                case HQ:
+                    myHQLocation = curr.location;
+                    break;
+                default:
+                    break;
+            }
         }
         
         numDesignSchools += comms.getNewDesignSchoolCount();
