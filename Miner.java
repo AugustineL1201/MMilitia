@@ -15,7 +15,7 @@ public class Miner extends Unit {
     public void takeTurn() throws GameActionException {
         super.takeTurn();
         
-        if ((numVaporators < 2) && (HQ.numMiners == 7) && (DesignSchool.numLandscapers == 4)) {
+        if ((numVaporators < 2) && (HQ.numMiners == 5) && (DesignSchool.numLandscapers == 3)) {
             for (Direction dir : Util.directions)
                 if(tryBuild(RobotType.VAPORATOR, dir)){
                     numVaporators++;
