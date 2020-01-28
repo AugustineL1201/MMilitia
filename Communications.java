@@ -23,7 +23,7 @@ public class Communications {
     static int getRealRadius(RobotType robotType) {
         return (int)Math.ceil(Math.sqrt(robotType.sensorRadiusSquared));
     }
-    static MapLocation searchForTile(RobotController rc, MapLocation currLocation, int tile, int radius) throws GameActionException {
+    static MapLocation searchForTile(RobotController rc, MapLocation loc, int tile, int radius) throws GameActionException {
         MapLocation tileLocation = null;
         MapLocation senseLocation = new MapLocation(loc.x - radius, loc.y - radius);
 
