@@ -87,6 +87,18 @@ public class Communications {
         }
         return count;
     }
+    public void broadcastRefineryCreation() throws GameActionException {
+        if (broadcastedCreation) return;
+
+        int[] message = new int[7];
+        message[0] = teamSecret;
+        message[1] = 3;
+
+        if (rc.canSubmitTransaction(message, 3)) {
+            rc.submitTransaction(message, 3);
+            this.broadcastedCreation = true;
+        }
+    }
     
     public void broadcastLandscaperCreation() throws GameActionException {
         if (broadcastedCreation) return;
