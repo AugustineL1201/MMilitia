@@ -25,13 +25,14 @@ public class Miner extends Unit {
         
         numRefinery += comms.getNewRefineryCount();
         
-        if (numRefinery < 3) {
+        if (numRefinery <= 3) {
             for (Direction dir : Util.directions)
                 if(tryBuild(RobotType.REFINERY, dir)){
                     numRefinery++;
                     System.out.println("new refineries");
                 }
         }
+        
         
         if (soupLocation == null) {
             int radius = comms.getRealRadius(RobotType.MINER);
