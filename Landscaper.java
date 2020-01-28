@@ -6,7 +6,7 @@ public class Landscaper extends Unit {
     public Landscaper(RobotController r) {
         super(r);
     }
-    
+    static MapLocation myHQLocation = null;
 
     public void takeTurn() throws GameActionException {
         super.takeTurn();
