@@ -23,7 +23,6 @@ public class Miner extends Unit {
     public void takeTurn() throws GameActionException {
         super.takeTurn();
         
-        tryBuildBuilding(rc, RobotType.VAPORATOR, currLocation, true);
         numVaporators += comms.getNewVaporatorCount();
         
         if (numVaporators < 3) {
