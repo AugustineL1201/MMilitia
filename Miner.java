@@ -5,13 +5,9 @@ import java.util.ArrayList;
 public class Miner extends Unit {
     
     static Direction searchDirection = null;
-    static Direction prevDirection = null;
     static MapLocation soupLocation = null;
-    static MapLocation myHQLocation = null;
-
-    static boolean goingBackToHQ = false;
     
-    static int numVaporators = 0;
+    int numVaporators = 0;
     int numDesignSchools = 0;
     
     ArrayList<MapLocation> soupLocations = new ArrayList<MapLocation>();
@@ -126,9 +122,5 @@ public class Miner extends Unit {
             }
         }
     }
-    static boolean designSchoolTooFar(MapLocation currLocation) {
-        Direction oppositeHQ = currLocation.directionTo(myHQLocation).opposite();
-        MapLocation farthestBuild = currLocation.add(oppositeHQ);
-        return (!farthestBuild.isWithinDistanceSquared(myHQLocation, RobotType.LANDSCAPER.sensorRadiusSquared));
-    }
+    
 }
