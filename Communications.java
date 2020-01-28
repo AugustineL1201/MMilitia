@@ -71,7 +71,7 @@ public class Communications {
         return count;
     }
     
-    public int getVaporatorCount() throws GameActionException {
+    public int getNewVaporatorCount() throws GameActionException {
         int count = 0;
         for(Transaction tx : rc.getBlock(rc.getRoundNum() - 1)) {
             int[] mess = tx.getMessage();
