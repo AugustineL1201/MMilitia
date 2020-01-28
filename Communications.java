@@ -8,7 +8,7 @@ public class Communications {
     // state related only to communications should go here
 
     // all messages from our team should start with this so we can tell them apart
-    static final int teamSecret = 444444444;
+    static final int teamSecret = 120122644;
     // the second entry in every message tells us what kind of message it is. e.g. 0 means it contains the HQ location
     static final String[] messageType = {
         "HQ loc",
@@ -54,7 +54,7 @@ public class Communications {
         message[3] = loc.y; // y coord of HQ
         if (rc.canSubmitTransaction(message, 3)) {
             rc.submitTransaction(message, 3);
-            broadcastedCreation = true;
+            this.broadcastedCreation = true;
         }
     }
 
@@ -69,6 +69,31 @@ public class Communications {
             }
         }
         return count;
+    }
+    
+    public int getVaporatorCount() throws GameActionException {
+        int count = 0;
+        for(Transaction tx : rc.getBlock(rc.getRoundNum() - 1)) {
+            int[] mess = tx.getMessage();
+            if(mess[0] == teamSecret && mess[1] == 1){
+                System.out.println("more vaporators = more soup");
+                count += 1;
+            }
+        }
+        return count;
+    }
+    
+    public void broadcastLandscaperCreation() throws GameActionException {
+        if (broadcastedCreation) return;
+
+        int[] message = new int[7];
+        message[0] = teamSecret;
+        message[1] = 2;
+
+        if (rc.canSubmitTransaction(message, 3)) {
+            rc.submitTransaction(message, 3);
+            this.broadcastedCreation = true;
+        }
     }
 
     public void broadcastSoupLocation(MapLocation loc ) throws GameActionException {
