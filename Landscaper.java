@@ -6,7 +6,6 @@ public class Landscaper extends Unit {
     public Landscaper(RobotController r) {
         super(r);
     }
-    static MapLocation myHQLocation = null;
 
     public void takeTurn() throws GameActionException {
         super.takeTurn();
@@ -21,15 +20,6 @@ public class Landscaper extends Unit {
         
          if(rc.getDirtCarrying() == 0){
             tryDig();
-        }
-        
-         if(myHQLocation == null){
-            RobotInfo[] nearby = rc.senseNearbyRobots(RobotType.LANDSCAPER.sensorRadiusSquared, rc.getTeam());
-            for (RobotInfo curr : nearby) {
-                if (curr.getType() == RobotType.HQ) {
-                    myHQLocation = curr.location;
-                }
-            }
         }
 
         MapLocation bestPlaceToBuildWall = null;
