@@ -15,7 +15,9 @@ public class Miner extends Unit {
     public void takeTurn() throws GameActionException {
         super.takeTurn();
         
-        if ((numVaporators < 2) && (HQ.numMiners == 5) && (DesignSchool.numLandscapers == 3)) {
+        numVaporators += comms.getNewVaporatorCount();
+        
+        if ((comms.getNewVaporatorCount() < 2) && (HQ.numMiners == 5) && (DesignSchool.numLandscapers == 3)) {
             for (Direction dir : Util.directions)
                 if(tryBuild(RobotType.VAPORATOR, dir)){
                     numVaporators++;
@@ -39,7 +41,7 @@ public class Miner extends Unit {
             if (tryRefine(dir))
                 System.out.println("I refined soup! " + rc.getTeamSoup());
 
-        if (numDesignSchools < 3){
+        if (comms.getNewDesignSchoolCount() < 3){
             if(tryBuild(RobotType.DESIGN_SCHOOL, Util.randomDirection()))
                 System.out.println("created a design school");
         }
