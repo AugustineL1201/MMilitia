@@ -23,9 +23,6 @@ public class Communications {
     static int getRealRadius(RobotType robotType) {
         return (int)Math.ceil(Math.sqrt(robotType.sensorRadiusSquared));
     }
-    static MapLocation searchForTile(RobotController rc, MapLocation loc, int tile, int radius) throws GameActionException {
-        MapLocation tileLocation = null;
-        MapLocation senseLocation = new MapLocation(loc.x - radius, loc.y - radius);
 
     public void sendHqLoc(MapLocation loc) throws GameActionException {
         int[] message = new int[7];
@@ -53,7 +50,7 @@ public class Communications {
 
     public boolean broadcastedCreation = false;
     public void broadcastDesignSchoolCreation(MapLocation loc) throws GameActionException {
-        if(broadcastedCreation) return; // don't re-broadcast
+        if(broadcastedCreation) return;
 
         int[] message = new int[7];
         message[0] = teamSecret;
