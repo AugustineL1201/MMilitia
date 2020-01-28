@@ -3,7 +3,7 @@ import battlecode.common.*;
 import java.util.ArrayList;
 
 public class Miner extends Unit {
-    
+    static int numVaportators = 0;
     int numDesignSchools = 0;
     ArrayList<MapLocation> soupLocations = new ArrayList<MapLocation>();
 
@@ -13,6 +13,13 @@ public class Miner extends Unit {
 
     public void takeTurn() throws GameActionException {
         super.takeTurn();
+        
+         if ((numVaporators < 2) && (HQ.numMiners == 7) && (DesignSchool.numLandscapers == 4)) {
+            for (Direction dir : Util.directions)
+                if(tryBuild(RobotType.VAPORATOR, dir)){
+                    numVaporators++;
+                }
+        }
 
         numDesignSchools += comms.getNewDesignSchoolCount();
         comms.updateSoupLocations(soupLocations);
