@@ -24,8 +24,10 @@ public class Miner extends Unit {
         super.takeTurn();
         
         numRefinery += comms.getNewRefineryCount();
+        comms.updateSoupLocations(soupLocations);
+        checkIfSoupGone();
         
-        if (numRefinery <= 1) {
+        if (numRefinery < 1) {
             for (Direction dir : Util.directions)
                 if(tryBuild(RobotType.REFINERY, dir)){
                     numRefinery++;
