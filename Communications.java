@@ -76,7 +76,7 @@ public class Communications {
         return count;
     }
     
-    public void broadcastRefineryCreation() throws GameActionException {
+    public void broadcastRefineryCreation(MapLocation loc) throws GameActionException {
         if (broadcastedCreation) return;
 
         int[] message = new int[7];
