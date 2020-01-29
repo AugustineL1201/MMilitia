@@ -72,6 +72,7 @@ public class Miner extends Unit {
         if (numRefinery < 1) {
             for (Direction dir : Util.directions)
                 if(tryBuild(RobotType.REFINERY, Util.randomDirection())){
+                    numRefinery++;
                     System.out.println("new refineries");
                 }
         }
