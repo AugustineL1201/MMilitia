@@ -37,11 +37,11 @@ public class Landscaper extends Unit {
                 }
             }
         }
-        if (Math.random() < 1.0){
+        if (Math.random() < 0.1){
             // build the wall
             if (bestPlaceToBuildWall != null) {
                 rc.depositDirt(rc.getLocation().directionTo(bestPlaceToBuildWall));
-                rc.setIndicatorDot(bestPlaceToBuildWall, 255, 255, 255);
+                rc.setIndicatorDot(bestPlaceToBuildWall, 0, 500, 0);
                 System.out.println("building a wall");
             }
         }
