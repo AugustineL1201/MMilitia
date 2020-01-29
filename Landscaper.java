@@ -28,7 +28,7 @@ public class Landscaper extends Unit {
             int lowestElevation = 9999999;
             for (Direction dir : Util.directions) {
                 MapLocation tileToCheck = hqLoc.add(dir);
-                if(rc.getLocation().distanceSquaredTo(tileToCheck) < 4
+                if(rc.getLocation().distanceSquaredTo(tileToCheck) < 1
                         && rc.canDepositDirt(rc.getLocation().directionTo(tileToCheck))) {
                     if (rc.senseElevation(tileToCheck) < lowestElevation) {
                         lowestElevation = rc.senseElevation(tileToCheck);
@@ -37,21 +37,6 @@ public class Landscaper extends Unit {
                 }
             }
         }
-        
-        if ((hqLoc != null)&&(rc.turnCount == 500)) {
-            int lowestElevation = 9999999;
-            for (Direction dir : Util.directions) {
-                MapLocation tileToCheck = hqLoc.add(dir);
-                if(rc.getLocation().distanceSquaredTo(tileToCheck) < 999999
-                        && rc.canDepositDirt(rc.getLocation().directionTo(tileToCheck))) {
-                    if (rc.senseElevation(tileToCheck) < lowestElevation) {
-                        lowestElevation = rc.senseElevation(tileToCheck);
-                        bestPlaceToBuildWall = tileToCheck;
-                    }
-                }
-            }
-        }
-        
         
         if (Math.random() < 0.25){
             // build the wall
