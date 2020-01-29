@@ -7,7 +7,7 @@ public class Miner extends Unit {
     static Direction searchDirection = null;
     static MapLocation soupLocation = null;
     
-    static int numRefinery = 0;
+    static int numVaporator = 0;
     int numDesignSchools = 0;
     
     ArrayList<MapLocation> soupLocations = new ArrayList<MapLocation>();
@@ -23,15 +23,15 @@ public class Miner extends Unit {
     public void takeTurn() throws GameActionException {
         super.takeTurn();
         
-        numRefinery += comms.getNewRefineryCount();
+        numVaporator += comms.getNewVaporatorCount();
         comms.updateSoupLocations(soupLocations);
         checkIfSoupGone();
         
-        if ((numRefinery < 1)&&(DesignSchool.numLandscapers==1)) {
+        if (numVaporator < 1) {
             for (Direction dir : Util.directions)
-                if(tryBuild(RobotType.REFINERY, dir)){
-                    numRefinery++;
-                    System.out.println("new refineries");
+                if(tryBuild(RobotType.VAPORATOR, Util.randomDirection())){
+                    numVaporator++;
+                    System.out.println("new vaporators");
                 }
         }
         
