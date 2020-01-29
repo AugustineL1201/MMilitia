@@ -18,8 +18,9 @@ public class DesignSchool extends Building {
         if (numLandscapers < 5) {
         for (Direction dir : Util.directions) {
             if(tryBuild(RobotType.LANDSCAPER, dir)) {
-                System.out.println("made a landscaper");
                 numLandscapers++;
+                System.out.println("made a landscaper");
+                
             }
         }
         }
