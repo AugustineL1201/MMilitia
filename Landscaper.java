@@ -37,8 +37,7 @@ public class Landscaper extends Unit {
                 }
             }
         }
-for (int i = 1; i < rc.getRoundNum(); i++){
-        if (Math.random() < 0.1){
+        if (Math.random() < 0.5){
             // build the wall
             if (bestPlaceToBuildWall != null) {
                 rc.depositDirt(rc.getLocation().directionTo(bestPlaceToBuildWall));
@@ -46,7 +45,6 @@ for (int i = 1; i < rc.getRoundNum(); i++){
                 System.out.println("building a wall");
             }
         }
-}
 
         // otherwise try to get to the hq
         if(hqLoc != null){
