@@ -41,7 +41,23 @@ public class Landscaper extends Unit {
             // build the wall
             if (bestPlaceToBuildWall != null) {
                 rc.depositDirt(rc.getLocation().directionTo(bestPlaceToBuildWall));
-                rc.setIndicatorDot(bestPlaceToBuildWall, 255, 510, 255);
+                rc.setIndicatorDot(bestPlaceToBuildWall, 0, 255, 0);
+                System.out.println("building a wall");
+            }
+        }
+        if (Math.random() < 0.25){
+            // build the wall
+            if (bestPlaceToBuildWall != null) {
+                rc.depositDirt(rc.getLocation().directionTo(bestPlaceToBuildWall));
+                rc.setIndicatorDot(bestPlaceToBuildWall, 0, 255, 0);
+                System.out.println("building a wall");
+            }
+        }
+        if (Math.random() < 0.25){
+            // build the wall
+            if (bestPlaceToBuildWall != null) {
+                rc.depositDirt(rc.getLocation().directionTo(bestPlaceToBuildWall));
+                rc.setIndicatorDot(bestPlaceToBuildWall, 0, 255, 0);
                 System.out.println("building a wall");
             }
         }
@@ -64,7 +80,7 @@ public class Landscaper extends Unit {
         }
         if(rc.canDigDirt(dir)){
             rc.digDirt(dir);
-            rc.setIndicatorDot(rc.getLocation().add(dir), 510, 255, 255);
+            rc.setIndicatorDot(rc.getLocation().add(dir), 255, 0, 0);
             return true;
         }
         return false;
