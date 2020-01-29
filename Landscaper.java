@@ -38,7 +38,7 @@ public class Landscaper extends Unit {
             }
         }
         
-        if ((hqLoc != null)&&(rc.turnCount == 500 {
+        if ((hqLoc != null)&&(rc.turnCount == 500)) {
             int lowestElevation = 9999999;
             for (Direction dir : Util.directions) {
                 MapLocation tileToCheck = hqLoc.add(dir);
