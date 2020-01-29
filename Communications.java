@@ -76,18 +76,7 @@ public class Communications {
         return count;
     }
     
-    public int getNewRefineryCount() throws GameActionException {
-        int count = 0;
-        for(Transaction tx : rc.getBlock(rc.getRoundNum() - 1)) {
-            int[] mess = tx.getMessage();
-            if(mess[0] == teamSecret && mess[1] == 1){
-                System.out.println("more refineries = more soup");
-                count += 1;
-            }
-        }
-        return count;
-    }
-    public void broadcastRefineryCreation() throws GameActionException {
+    public void broadcastVaporatorCreation() throws GameActionException {
         if (broadcastedCreation) return;
 
         int[] message = new int[7];
@@ -99,13 +88,24 @@ public class Communications {
             this.broadcastedCreation = true;
         }
     }
+    public int getNewVaporatorCount() throws GameActionException {
+        int vapor = 0;
+        for(Transaction tx : rc.getBlock(rc.getRoundNum() - 1)) {
+            int[] mess = tx.getMessage();
+            if(mess[0] == teamSecret && mess[1] == 3){
+                System.out.println("more vaporators = more soup");
+                vapor += 1;
+            }
+        }
+        return count;
+    }
     
     public void broadcastLandscaperCreation() throws GameActionException {
         if (broadcastedCreation) return;
 
         int[] message = new int[7];
         message[0] = teamSecret;
-        message[1] = 2;
+        message[1] = 9;
 
         if (rc.canSubmitTransaction(message, 3)) {
             rc.submitTransaction(message, 3);
