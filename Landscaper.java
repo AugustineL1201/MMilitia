@@ -28,7 +28,7 @@ public class Landscaper extends Unit {
             int lowestElevation = 9999999;
             for (Direction dir : Util.directions) {
                 MapLocation tileToCheck = hqLoc.add(dir);
-                if(rc.getLocation().distanceSquaredTo(tileToCheck) < 10
+                if(rc.getLocation().distanceSquaredTo(tileToCheck) < 1
                         && rc.canDepositDirt(rc.getLocation().directionTo(tileToCheck))) {
                     if (rc.senseElevation(tileToCheck) < lowestElevation) {
                         lowestElevation = rc.senseElevation(tileToCheck);
