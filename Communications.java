@@ -97,7 +97,7 @@ public class Communications {
                 vapor += 1;
             }
         }
-        return count;
+        return vapor;
     }
     
     public void broadcastLandscaperCreation() throws GameActionException {
