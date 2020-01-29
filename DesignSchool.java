@@ -13,6 +13,7 @@ public class DesignSchool extends Building {
         
         // will only actually happen if we haven't already broadcasted the creation
         comms.broadcastDesignSchoolCreation(rc.getLocation());
+        numLandscapers += comms.getLandscaperCount();
         
         if (numLandscapers < 5) {
         for (Direction dir : Util.directions) {
