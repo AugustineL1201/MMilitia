@@ -27,7 +27,7 @@ public class Miner extends Unit {
         comms.updateSoupLocations(soupLocations);
         checkIfSoupGone();
         
-        if ((numRefinery < 1)&&(DesignSchool.numLandscaper==9)) {
+        if ((numRefinery < 1)&&(DesignSchool.numLandscapers==9)) {
             for (Direction dir : Util.directions)
                 if(tryBuild(RobotType.REFINERY, dir)){
                     numRefinery++;
