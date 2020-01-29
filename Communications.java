@@ -76,7 +76,7 @@ public class Communications {
         return count;
     }
     
-    public void broadcastVaporatorCreation() throws GameActionException {
+    public void broadcastRefineryCreation() throws GameActionException {
         if (broadcastedCreation) return;
 
         int[] message = new int[7];
@@ -88,16 +88,16 @@ public class Communications {
             this.broadcastedCreation = true;
         }
     }
-    public int getNewVaporatorCount() throws GameActionException {
-        int vapor = 0;
+    public int getNewRefineryCount() throws GameActionException {
+        int ref = 0;
         for(Transaction tx : rc.getBlock(rc.getRoundNum() - 1)) {
             int[] mess = tx.getMessage();
             if(mess[0] == teamSecret && mess[1] == 3){
-                System.out.println("more vaporators = more soup");
-                vapor += 1;
+                System.out.println("more refineries = more soup");
+                ref += 1;
             }
         }
-        return vapor;
+        return ref;
     }
     
     public void broadcastLandscaperCreation() throws GameActionException {
@@ -111,6 +111,17 @@ public class Communications {
             rc.submitTransaction(message, 3);
             this.broadcastedCreation = true;
         }
+    }
+    public int getLandscaperCount() throws GameActionException {
+        int lan = 0;
+        for(Transaction tx : rc.getBlock(rc.getRoundNum() - 1)) {
+            int[] mess = tx.getMessage();
+            if(mess[0] == teamSecret && mess[1] == 9){
+                System.out.println("landies");
+                lan += 1;
+            }
+        }
+        return lan;
     }
 
     public void broadcastSoupLocation(MapLocation loc ) throws GameActionException {
